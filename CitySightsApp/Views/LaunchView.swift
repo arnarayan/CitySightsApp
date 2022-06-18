@@ -12,6 +12,15 @@ struct LaunchView: View {
     @EnvironmentObject var viewModel: ContentModel
     
     var body: some View {
+        
+        // Detect the authorization status of geolocating the user
+        
+        // if undetermined, show onboarding
+        
+        //
+        
+        
+        
         Text("Hello, world!")
             .padding()
         Text("\(viewModel.latData)")

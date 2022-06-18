@@ -101,7 +101,7 @@ class ContentModel : NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func setHeaders() -> [String:String] {
-        return ["Authorization":"Bearer L4kJwppLHfWf4CSaKP4f_cX_1AULmiF19On0l2rp5iV41NomdHVthxKwk3iLzRjAOiYL5zUrpbPcoDIluzb6LJsltGZ2C-uvBj1-GI-eLgdG4SXkVipwp3V01cuoYnYx"]
+        return ["Authorization":Keys.API_KEY]
     }
     
     func responseHandler(data:Data?, response: URLResponse?, error: Error?)  {
