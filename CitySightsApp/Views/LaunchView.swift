@@ -14,17 +14,14 @@ struct LaunchView: View {
     var body: some View {
         
         // Detect the authorization status of geolocating the user
-        
-        // if undetermined, show onboarding
-        
-        //
-        
-        
-        
-        Text("Hello, world!")
-            .padding()
-        Text("\(viewModel.latData)")
-        Text("\(viewModel.lonData)")
+        if !viewModel.isAuthorized() {
+            // if undetermined, show onboarding
+        }else if viewModel.isAuthorized() {
+            HomeView()
+        }else if viewModel.authorizationState == .denied {
+            // if denied show show denied view
+        }
+
     }
 }
 

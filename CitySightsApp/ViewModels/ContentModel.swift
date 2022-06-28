@@ -13,6 +13,7 @@ class ContentModel : NSObject, ObservableObject, CLLocationManagerDelegate {
     
     var currentCategory = ""
     var locationManager = CLLocationManager()
+    @Published var authorizationState = CLAuthorizationStatus.notDetermined
     @Published var latData: CLLocationDegrees
     @Published var lonData: CLLocationDegrees
     @Published var restaurants = [Business]()
@@ -38,9 +39,23 @@ class ContentModel : NSObject, ObservableObject, CLLocationManagerDelegate {
         
     }
     
+    func isAuthorized() -> Bool {
+        if (locationManager.authorizationStatus == CLAuthorizationStatus.authorizedAlways ||
+            locationManager.authorizationStatus == CLAuthorizationStatus.authorizedWhenInUse) {
+            return true
+        }
+        if (locationManager.authorizationStatus == .notDetermined) {
+            return false
+        }
+        return false
+    }
+    
     
     // Mark - Location Manager Delegate Methods
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        
+        self.authorizationState = locationManager.authorizationStatus
+        
         if locationManager.authorizationStatus == CLAuthorizationStatus.authorizedAlways ||
             locationManager.authorizationStatus == CLAuthorizationStatus.authorizedWhenInUse {
             
@@ -84,8 +99,7 @@ class ContentModel : NSObject, ObservableObject, CLLocationManagerDelegate {
                                           
         if let urlThing = urlComponents?.url {
             var request = URLRequest(url: urlThing, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
-            request.addValue("Bearer L4kJwppLHfWf4CSaKP4f_cX_1AULmiF19On0l2rp5iV41NomdHVthxKwk3iLzRjAOiYL5zUrpbPcoDIluzb6LJsltGZ2C-uvBj1-GI-eLgdG4SXkVipwp3V01cuoYnYx", forHTTPHeaderField: "Authorization")
-            //request.allHTTPHeaderFields = setHeaders()
+            request.addValue(Keys.API_KEY, forHTTPHeaderField: "Authorization")
             request.httpMethod = "GET"
 
             let dataTask = self.session.dataTask(with: request) { (data, response, error) in
@@ -100,34 +114,29 @@ class ContentModel : NSObject, ObservableObject, CLLocationManagerDelegate {
 
     }
     
-    func setHeaders() -> [String:String] {
-        return ["Authorization":Keys.API_KEY]
-    }
     
     func responseHandler(data:Data?, response: URLResponse?, error: Error?)  {
         
         if (error == nil && data != nil) {
-            //print(response)
+        
             do {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(BusinessSearch.self, from: data!)
 
-                
+                var businesses = response.businesses
+                businesses.sort {
+                    (b1, b2) -> Bool in
+                    return b1.distance ?? 0 < b2.distance ?? 0
+                }
                 DispatchQueue.main.async {
                     switch self.currentCategory {
                         case Constants.Restaurants:
-                            self.restaurants = response.businesses
+                            self.restaurants = businesses
                         case Constants.Arts:
-                            self.arts = response.businesses
+                            self.arts = businesses
                     default:
                         break
                     }
-                    /*if (self.currentCategory == Constants.Restaurants) {
-                        self.restaurants = response.businesses
-                    }
-                    if (self.currentCategory == Constants.Arts) {
-                        self.arts = response.businesses
-                    }*/
                     
                 }
                 

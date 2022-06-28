@@ -6,14 +6,14 @@
 //
 
 import Foundation
-struct Business: Decodable {
+struct Business: Identifiable, Decodable {
     var id: String?
     var alias: String?
     var name: String?
-    var image_url: String?
-    var is_closed: Bool?
+    var imageUrl: String?
+    var isClosed: Bool?
     var url: String?
-    var review_count: Int?
+    var reviewCount: Int?
     var categories: [Category]?
     var rating: Double?
     var coordinates:Coordinate?
@@ -21,7 +21,26 @@ struct Business: Decodable {
     var price: String?
     var location: Location?
     var phone: String?
-    var display_phone: String?
+    var displayPhone: String?
     var distance: Double?
+    
+    enum CodingKeys: String, CodingKey {
+        case imageUrl = "image_url"
+        case isClosed = "is_closed"
+        case reviewCount = "review_count"
+        case displayPhone = "display_phone"
+        case id
+        case alias
+        case name
+        case url
+        case categories
+        case rating
+        case coordinates
+        case transactions
+        case price
+        case location
+        case phone
+        case distance
+    }
     
 }
