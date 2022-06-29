@@ -11,7 +11,7 @@ struct HomeView: View {
     
     @EnvironmentObject var viewModel: ContentModel
     @State var isMapShowing = false
-    
+    @State var selectedBusiness: Business?
     var body: some View {
         
         if (viewModel.restaurants.count != 0 || viewModel.arts.count != 0){
@@ -35,7 +35,13 @@ struct HomeView: View {
                         }
                     }.navigationBarHidden(true)
                 }else {
-                    BusinessMapView().ignoresSafeArea()                }
+                    BusinessMapView(selectedBusiness: $selectedBusiness)
+                        .ignoresSafeArea()
+                        .sheet(item:$selectedBusiness) { business in
+                            BusinessDetail(business: business)
+                        }
+                    
+                }
             }
 
                 
