@@ -23,7 +23,11 @@ struct HomeView: View {
                             Image(systemName: "location")
                             Text("San Fransciso")
                             Spacer()
-                            Text("Switch to map view")
+                            Button(action: {
+                                self.isMapShowing = true
+                            }, label: {
+                                Text("Switch to map view.")
+                            })
                         }
                         Divider()
                         VStack(alignment: .leading) {
@@ -31,8 +35,7 @@ struct HomeView: View {
                         }
                     }.navigationBarHidden(true)
                 }else {
-                    // show map
-                }
+                    BusinessMapView().ignoresSafeArea()                }
             }
 
                 
