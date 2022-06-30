@@ -14,12 +14,15 @@ struct LaunchView: View {
     var body: some View {
         
         // Detect the authorization status of geolocating the user
-        if !viewModel.isAuthorized() {
+        if viewModel.authorizationState == .denied {
+            LocationDeniedView()
             // if undetermined, show onboarding
-        }else if viewModel.isAuthorized() {
+        }else if !viewModel.isAuthorized() {
+            OnboardingView()
+        }
+        
+        else if viewModel.isAuthorized() {
             HomeView()
-        }else if viewModel.authorizationState == .denied {
-            // if denied show show denied view
         }
 
     }

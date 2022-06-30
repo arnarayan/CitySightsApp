@@ -35,11 +35,29 @@ struct HomeView: View {
                         }
                     }.navigationBarHidden(true)
                 }else {
-                    BusinessMapView(selectedBusiness: $selectedBusiness)
-                        .ignoresSafeArea()
-                        .sheet(item:$selectedBusiness) { business in
-                            BusinessDetail(business: business)
+                    ZStack(alignment: .top) {
+                        BusinessMapView(selectedBusiness: $selectedBusiness)
+                            .ignoresSafeArea()
+                            .sheet(item:$selectedBusiness) { business in
+                                BusinessDetail(business: business)
+                            }
+                        ZStack {
+                            RectangleCard(color: Color.white).frame(height: 100)
+                            HStack {
+                                Image(systemName: "location")
+                                Text("Waterloo, ON")
+                                Spacer()
+                                Button(action: {
+                                    self.isMapShowing = false
+                                }, label: {
+                                    Text("Switch to list view.")
+                                })
+                            }.font(.footnote).padding([.leading, .trailing], 50)
                         }
+                        
+                        
+                    }.navigationBarHidden(true)
+
                     
                 }
             }

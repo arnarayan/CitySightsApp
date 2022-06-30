@@ -13,6 +13,10 @@
 		001AC3D7286B6A4A00374ACA /* TopImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001AC3D6286B6A4A00374ACA /* TopImage.swift */; };
 		001AC3D9286B73D400374ACA /* RectangleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001AC3D8286B73D400374ACA /* RectangleCard.swift */; };
 		001AC3DC286B803500374ACA /* BusinessMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001AC3DB286B803500374ACA /* BusinessMap.swift */; };
+		006F17E3286CF726004BCE58 /* DirectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F17E2286CF726004BCE58 /* DirectionsView.swift */; };
+		006F17E5286D00CD004BCE58 /* DirectionsMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F17E4286D00CD004BCE58 /* DirectionsMap.swift */; };
+		006F17E8286D2D1A004BCE58 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F17E7286D2D1A004BCE58 /* OnboardingView.swift */; };
+		006F17EA286E2589004BCE58 /* LocationDeniedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F17E9286E2589004BCE58 /* LocationDeniedView.swift */; };
 		00B276B7285E2A6500A8413F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B276B6285E2A6500A8413F /* Constants.swift */; };
 		00B276BB285E3D5D00A8413F /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B276BA285E3D5D00A8413F /* keys.swift */; };
 		00B276C0285E484B00A8413F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B276BF285E484B00A8413F /* HomeView.swift */; };
@@ -40,6 +44,10 @@
 		001AC3D6286B6A4A00374ACA /* TopImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopImage.swift; sourceTree = "<group>"; };
 		001AC3D8286B73D400374ACA /* RectangleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCard.swift; sourceTree = "<group>"; };
 		001AC3DB286B803500374ACA /* BusinessMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessMap.swift; sourceTree = "<group>"; };
+		006F17E2286CF726004BCE58 /* DirectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsView.swift; sourceTree = "<group>"; };
+		006F17E4286D00CD004BCE58 /* DirectionsMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsMap.swift; sourceTree = "<group>"; };
+		006F17E7286D2D1A004BCE58 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		006F17E9286E2589004BCE58 /* LocationDeniedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDeniedView.swift; sourceTree = "<group>"; };
 		00B276B6285E2A6500A8413F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		00B276BA285E3D5D00A8413F /* keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
 		00B276BF285E484B00A8413F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -80,6 +88,7 @@
 				001AC3D2286A9B6B00374ACA /* NameAndAddress.swift */,
 				001AC3D4286AA9BA00374ACA /* RowDivider.swift */,
 				001AC3D6286B6A4A00374ACA /* TopImage.swift */,
+				006F17E2286CF726004BCE58 /* DirectionsView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -88,8 +97,17 @@
 			isa = PBXGroup;
 			children = (
 				001AC3DB286B803500374ACA /* BusinessMap.swift */,
+				006F17E4286D00CD004BCE58 /* DirectionsMap.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		006F17E6286D2C9D004BCE58 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				001AC3D8286B73D400374ACA /* RectangleCard.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		00B276B5285E2A5500A8413F /* Resources */ = {
@@ -103,6 +121,7 @@
 		00B276BC285E47D200A8413F /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				006F17E7286D2D1A004BCE58 /* OnboardingView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -110,6 +129,7 @@
 		00B276BD285E47DC00A8413F /* Denied */ = {
 			isa = PBXGroup;
 			children = (
+				006F17E9286E2589004BCE58 /* LocationDeniedView.swift */,
 			);
 			path = Denied;
 			sourceTree = "<group>";
@@ -207,12 +227,12 @@
 		00B6923628544838001B805C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				00B692282854476E001B805C /* LaunchView.swift */,
 				00B276BF285E484B00A8413F /* HomeView.swift */,
+				00B692282854476E001B805C /* LaunchView.swift */,
+				006F17E6286D2C9D004BCE58 /* Common */,
 				00B276BE285E47E400A8413F /* Home */,
 				00B276BD285E47DC00A8413F /* Denied */,
 				00B276BC285E47D200A8413F /* Onboarding */,
-				001AC3D8286B73D400374ACA /* RectangleCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -289,6 +309,7 @@
 			files = (
 				00B692292854476E001B805C /* LaunchView.swift in Sources */,
 				00B6924328595BD8001B805C /* BusinessSearch.swift in Sources */,
+				006F17E3286CF726004BCE58 /* DirectionsView.swift in Sources */,
 				00B6923D2859598B001B805C /* Category.swift in Sources */,
 				001AC3D7286B6A4A00374ACA /* TopImage.swift in Sources */,
 				00B276C72861282E00A8413F /* BusinessSection.swift in Sources */,
@@ -300,9 +321,12 @@
 				001AC3D5286AA9BA00374ACA /* RowDivider.swift in Sources */,
 				00B276C3286116AF00A8413F /* BusinessList.swift in Sources */,
 				00B276C0285E484B00A8413F /* HomeView.swift in Sources */,
+				006F17EA286E2589004BCE58 /* LocationDeniedView.swift in Sources */,
 				001AC3D3286A9B6B00374ACA /* NameAndAddress.swift in Sources */,
 				00B276BB285E3D5D00A8413F /* keys.swift in Sources */,
+				006F17E5286D00CD004BCE58 /* DirectionsMap.swift in Sources */,
 				00B6923928544BA3001B805C /* ContentModel.swift in Sources */,
+				006F17E8286D2D1A004BCE58 /* OnboardingView.swift in Sources */,
 				00B276C928622DA800A8413F /* BusinessRow.swift in Sources */,
 				00B6923F285959E2001B805C /* Coordinate.swift in Sources */,
 				001AC3D9286B73D400374ACA /* RectangleCard.swift in Sources */,

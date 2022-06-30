@@ -31,12 +31,16 @@ class ContentModel : NSObject, ObservableObject, CLLocationManagerDelegate {
         // Request permission from the user
         locationManager.delegate = self
         
-        locationManager.requestWhenInUseAuthorization()
+        //locationManager.requestWhenInUseAuthorization()
         
         
         // Start geolocating the user, only after getting permission
         //locationManager.startUpdatingLocation()
         
+    }
+    
+    func requestAuthoriztion() {
+        locationManager.requestWhenInUseAuthorization()
     }
     
     func isAuthorized() -> Bool {

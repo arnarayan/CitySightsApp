@@ -10,7 +10,7 @@ import SwiftUI
 struct BusinessDetail: View {
     
     var business: Business
-
+    @State private var showDirections = false
     
     var body: some View {
 
@@ -56,10 +56,12 @@ struct BusinessDetail: View {
             ZStack {
                 RectangleCard(color: Color.blue).frame(height: 100)
                 Button(action: {
-                    
+                    self.showDirections = true
                 }, label: {
                     Text("Get Directions").foregroundColor(Color.white).bold()
-                })
+                }).sheet(isPresented: $showDirections) {
+                    DirectionsView(business: self.business)
+                }
             }
                 
 
